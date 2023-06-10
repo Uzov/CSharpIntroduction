@@ -4,13 +4,17 @@
 22 3 9 -> 22
 */
 
-int[] numbers = { 2, 3, 7 };
+int[,] numbers = { { 2, 3, 7 }, { 44, 5, 78 }, { 22, 3, 9 } };
 int max = 0;
-foreach (int number in numbers)
+for (int i = 0; i < 3; i++)
 {
-    if (number > max)
+    for (int j = 0; j < 3; j++)
     {
-        max = number;
+        if (numbers[i,j] > max)
+        {
+            max = numbers[i,j];
+        }
     }
+    Console.WriteLine($"Максимальное из трёх чисел: {max}");
+    max = 0;
 }
-Console.WriteLine($"Максимальное из трёх чисел: {max}");

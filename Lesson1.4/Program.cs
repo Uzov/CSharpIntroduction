@@ -7,7 +7,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int N = Convert.ToInt32(Console.ReadLine());
+        int N;
+        if (args[0] != null) { Console.WriteLine($"Задан аргумент командной строки {args[0]}."); }
+        if (args[0] == null) { N = Convert.ToInt32(Console.ReadLine()); } else N = Convert.ToInt32(args[0]);
         for (int i = 1; i <= N; i++) if (i % 2 == 0) { Console.WriteLine($"Число {i} чётное."); }
     }
 }
