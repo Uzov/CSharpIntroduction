@@ -3,9 +3,11 @@
 8 -> 2, 4, 6, 8
 */
 
-int N = 10;
-
-for (int i = 1; i <= N; i++)
+internal class Program
 {
-    if ((i % 2) == 0) { Console.WriteLine($"Число {i} чётное."); }
+    private static void Main(string[] args)
+    {
+        int N = Convert.ToInt32(Console.ReadLine());
+        for (int i = 1; i <= N; i++) if (i % 2 == 0) { Console.WriteLine($"Число {i} чётное."); }
+    }
 }
