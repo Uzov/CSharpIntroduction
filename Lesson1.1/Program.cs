@@ -7,12 +7,12 @@ int a;
 int b;
 
 a = 5; b=7;
-if (a > b) { Console.WriteLine(a); } else { Console.WriteLine(b); }
+if (a > b) { Console.WriteLine($"Большее число: {a}"); } else { Console.WriteLine($"Большее число: {b}"); }
 
 a = 2; b = 10;
 int c = a > b ? a : b;
-Console.WriteLine(c);
+Console.WriteLine($"Большее число: {c}");
 
 a = -9; b = -3;
-if (a > b) { Console.WriteLine(a); } else { Console.WriteLine(b); }
+if (a > b) { Console.WriteLine($"Большее число: {a}"); } else { Console.WriteLine($"Большее число: {b}"); }
 
