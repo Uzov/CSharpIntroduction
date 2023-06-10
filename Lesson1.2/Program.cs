@@ -6,9 +6,11 @@
 
 int[,] numbers = { { 2, 3, 7 }, { 44, 5, 78 }, { 22, 3, 9 } };
 int max = 0;
-for (int i = 0; i < 3; i++)
+int rows = numbers.GetUpperBound(0) + 1;    // количество строк
+int columns = numbers.Length / rows;        // количество столбцов
+for (int i = 0; i < rows; i++)
 {
-    for (int j = 0; j < 3; j++)
+    for (int j = 0; j < columns; j++)
     {
         if (numbers[i,j] > max)
         {
