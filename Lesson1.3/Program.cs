@@ -4,6 +4,8 @@
 7 -> нет
  */
 
-int a = 4;
-bool c = (a % 2) == 0 ? true : false;
-if (c) { Console.WriteLine($"Число чётное."); }
+int [] numbers = { 4, -3, 7 };
+foreach (var number in numbers)
+{
+    if ((number % 2) == 0) { Console.WriteLine($"Число {number} чётное."); } else { Console.WriteLine($"Число {number} нечётное."); }
+}
