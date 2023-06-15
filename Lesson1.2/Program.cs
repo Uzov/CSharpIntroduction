@@ -4,19 +4,10 @@
 22 3 9 -> 22
 */
 
-int[,] numbers = { { 2, 3, 7 }, { 44, 5, 78 }, { 22, 3, 9 } };
+using System;
+
 int max = 0;
-int rows = numbers.GetUpperBound(0) + 1;    // количество строк
-int columns = numbers.Length / rows;        // количество столбцов
-for (int i = 0; i < rows; i++)
-{
-    for (int j = 0; j < columns; j++)
-    {
-        if (numbers[i,j] > max)
-        {
-            max = numbers[i,j];
-        }
-    }
-    Console.WriteLine($"Максимальное из трёх чисел: {max}");
-    max = 0;
-}
+Console.WriteLine("Нахождение максимального числа. Введите целые положительные числа через пробел:");
+string[] numbers = Console.ReadLine().Split(' ');
+foreach (string number in numbers) if (Convert.ToInt32(number) > max) max = Convert.ToInt32(number);
+Console.WriteLine($"Максимальное число: {max}");

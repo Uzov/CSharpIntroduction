@@ -4,6 +4,8 @@
 7 -> нет
  */
 
+Console.ReadLine().Split(" ");
+
 int [] numbers = { 4, -3, 7 };
 foreach (var number in numbers)
 {
