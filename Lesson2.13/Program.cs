@@ -15,7 +15,7 @@ internal class Program
             string? number = Console.ReadLine()!;
             Console.WriteLine("Какой по счёту ищем элемент?");
             string? position = Console.ReadLine()!;
-            if (int.TryParse(number, out var numInt) && int.TryParse(position, out var posInt))
+            if (Int64.TryParse(number, out var numInt) && Int64.TryParse(position, out var posInt))
             {
                 findPosition(numInt, posInt);
             }
@@ -27,7 +27,7 @@ internal class Program
             if (Console.ReadLine() == "q") break;
         }
 
-        static void findPosition(int num, int pos)
+        static void findPosition(Int64 num, Int64 pos)
         {
             if (Math.Log10(num) < pos - 1)
             {
