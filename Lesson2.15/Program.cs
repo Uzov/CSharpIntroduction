@@ -30,7 +30,7 @@ internal class Program
             //Обработка исключения на правильный ввод даты 
             try
             {
-                DateTime dateTime = DateTime.ParseExact(searchDate, "dd-MM-yyyy", provider);
+                DateTimeOffset dateTime = DateTime.ParseExact(searchDate, "dd-MM-yyyy", provider);
                 int year = dateTime.Date.Year; //год
                 int month = dateTime.Date.Month; // месяц
                 int date = dateTime.Date.Day; // число
