@@ -8,6 +8,7 @@
 https://metanit.com/sharp/tutorial/
 https://zetcode.com/csharp/httpclient/
 https://www.c-sharpcorner.com/UploadFile/manas1/string-to-datetime-conversion-in-C-Sharp/
+https://habr.com/ru/articles/405519/
  */
 
 using System.Globalization;
@@ -15,6 +16,7 @@ using System.Net.Http.Headers;
 
 internal class Program
 {
+    public const string URL = "https://isdayoff.ru/";
     //Асинхронный метод Main имеет в определении перед возвращаемым типом модификатор async,
     //его возвращаемым типом является Task, и в теле метода определено выражение await.
     //Main не возвращает никакого объекта Task, однако поскольку в теле метода применяется
@@ -23,34 +25,38 @@ internal class Program
     {
         while (true)
         {
-            Console.WriteLine("Введите дату в формате dd-MM-yyyy:");
-            //string? searchDate = Console.ReadLine()!;
-            string searchDate = "04-04-2023";
+            Console.WriteLine("Введите дату в формате yyyyMMdd:");
+            string? searchDate = Console.ReadLine()!;
             CultureInfo provider = CultureInfo.InvariantCulture;
             //Обработка исключения на правильный ввод даты 
             try
             {
-                DateTimeOffset dateTime = DateTime.ParseExact(searchDate, "dd-MM-yyyy", provider);
-                int year = dateTime.Date.Year; //год
-                int month = dateTime.Date.Month; // месяц
-                int date = dateTime.Date.Day; // число
+                DateTimeOffset dateTime = DateTime.ParseExact(searchDate, "yyyyMMdd", provider);
             //client - экземпляр класса HttpClient().
             using (var client = new HttpClient())
             {
                 //Добавляем параметры в заголовок http.
-                client.BaseAddress = new Uri("http://xmlcalendar.ru/data/ru/");
+                client.BaseAddress = new Uri(URL);
                 client.DefaultRequestHeaders.Add("User-Agent", "C# console program");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
 
-                var url = $"{Convert.ToString(year)}/calendar.json";
+                var url = $"{searchDate}";
                 //Делаем асинхронный http запрос, тип запроса get (получить реурс).
                 HttpResponseMessage response = await client.GetAsync(url);
                 //Обработка исключения на успешность http запроса.
                 try
                 {
                     response.EnsureSuccessStatusCode();
-                        string json = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(json);
+                    string isDayOf = await response.Content.ReadAsStringAsync();
+                    switch (isDayOf)
+                        {
+                            case "1":
+                                Console.WriteLine($"Дата {searchDate} - выходной день.");
+                                break;
+                            case "0":
+                                Console.WriteLine($"Дата {searchDate} - рабочий день.");
+                                break;
+                        }
                 }
                 catch (HttpRequestException)
                 {
