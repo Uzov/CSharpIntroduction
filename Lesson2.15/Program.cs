@@ -50,12 +50,9 @@ internal class Program
                     string isDayOf = await response.Content.ReadAsStringAsync();
                     switch (isDayOf)
                         {
-                            case "1":
-                                Console.WriteLine($"Дата {searchDate} - выходной день.");
-                                break;
-                            case "0":
-                                Console.WriteLine($"Дата {searchDate} - рабочий день.");
-                                break;
+                            case "1": Console.WriteLine($"Дата {searchDate} - выходной день."); break;
+                            case "0": Console.WriteLine($"Дата {searchDate} - рабочий день."); break;
+                            default: Console.WriteLine("Не удалось определить."); break;
                         }
                 }
                 catch (HttpRequestException)
