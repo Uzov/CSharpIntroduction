@@ -12,6 +12,8 @@
 */
 
 
+using System;
+
 namespace Lesson3
 {
     public class MyMath
@@ -23,13 +25,27 @@ namespace Lesson3
             return result;
         }
     }
+
+    public class MyMathD
+    {
+        Operation power1 = Pow;
+        public static int Pow(int num, int pow)
+        {
+            var result = 1; 
+            for (int i = 0; i < pow; i++) result *= num;
+            return (int)result;
+    }
+        
+    }
     
+    delegate int Operation(int num, int pow);
     public class Program
     {
         public static void Main()
         {
             Console.WriteLine(MyMath.Pow(3, 5));
             Console.WriteLine(MyMath.Pow(2, 4));
+            Console.WriteLine(MyMathD.Pow(2, 4));
         }
     }
 }
