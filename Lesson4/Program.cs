@@ -11,8 +11,7 @@
 Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
 */
 
-
-using System;
+using System.Collections;
 
 namespace Lesson3
 {
@@ -26,31 +25,44 @@ namespace Lesson3
         }
         public static int Sum (int num)
         {
-            var result = 1;
+            var result = 0;
+            while (num > 0)
+            {
+                result = result + num % 10;
+                num = num / 10;
+            }
             return result;
         }
-    }
-
-    public class MyMathD
-    {
-        Operation power1 = Pow;
-        public static int Pow(int num, int pow)
+        public static IEnumerator GenNumbers(int maxValue)
         {
-            var result = 1; 
-            for (int i = 0; i < pow; i++) result *= num;
-            return (int)result;
+            Random rnd = new Random();
+            int value = rnd.Next();
+            for (int i = 0; i < maxValue; i++)
+            {
+                int result = rnd.Next(1, 100);
+                yield return result;
+            }
+        }
+        public static void PrintNumbers(int maxValue)
+        {
+            do
+            {
+                int number = (int)GenNumbers(maxValue).Current;
+                Console.Write(number);
+            }
+            while (GenNumbers(maxValue).MoveNext());
+        }
     }
-        
-    }
-    
-    delegate int Operation(int num, int pow);
-    public class Program
+      public class Program
     {
         public static void Main()
         {
             Console.WriteLine(MyMath.Pow(3, 5));
             Console.WriteLine(MyMath.Pow(2, 4));
-            Console.WriteLine(MyMathD.Pow(2, 4));
+            Console.WriteLine(MyMath.Sum(452));
+            Console.WriteLine(MyMath.Sum(82));
+            Console.WriteLine(MyMath.Sum(9012));
+            MyMath.PrintNumbers(8);
         }
     }
 }
