@@ -22,6 +22,11 @@ namespace Lesson3
             for (int i = 0; i < pow; i++) result *= num;
             return result;
         }
+        public static int Sum (int num)
+        {
+            var result = 1;
+            return result;
+        }
     }
     
     public class Program
