@@ -45,13 +45,13 @@ namespace Lesson3
         }
         public static void PrintNumbers(int maxValue)
         {
-            //GenNumbers(maxValue).Reset();
+            GenNumbers(maxValue).Reset();
             do
             {
                 var number = (int)GenNumbers(maxValue).Current;
                 Console.Write(number);
             }
-            while ((bool)GenNumbers(maxValue).MoveNext());
+            while (GenNumbers(maxValue).MoveNext());
         }
     }
       public class Program
