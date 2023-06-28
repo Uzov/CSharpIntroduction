@@ -56,7 +56,7 @@ namespace Lesson3
     }
       public class Program
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
             Console.WriteLine(MyMath.Pow(3, 5));
             Console.WriteLine(MyMath.Pow(2, 4));
