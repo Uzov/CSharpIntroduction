@@ -13,9 +13,9 @@ using System;
 
 namespace Lesson5
 {
-    public class Program
+    internal class Program
     {
-        public static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //Решение Задачи 34
             int[] theArray = new int[] { 345, 897, 568, 234 };

@@ -8,28 +8,55 @@
 b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
  */
 
-internal class Program
+namespace Lesson6
 {
-    private static void Main(string[] args)
+    internal class Program
     {
-        while (true)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Введите целое положительное число:");
-            string? number = Console.ReadLine()!;
-            Console.WriteLine("Какой по счёту ищем элемент?");
-            string? position = Console.ReadLine()!;
-            //string input = Console.ReadLine();
-            //string[] result = input.Split();
-            if (Int64.TryParse(number, out var numInt) && Int64.TryParse(position, out var posInt))
+            while (true)
             {
-                Console.WriteLine();
+                //Решение Задачи 41
+                Counts.Zero();
+                //Решение Задачи 43
+                Counts.Cross();
+                Console.WriteLine("Нажмите любую клавишу или введите 'q' и нажмите Enter для выхода.");
+                if (Console.ReadLine() == "q") break;
             }
-            else
-            {
-                Console.WriteLine("Некорректный ввод!");
-            }
-            Console.WriteLine("Нажмите любую клавишу или введите 'q' и нажмите Enter для выхода.");
-            if (Console.ReadLine() == "q") break;
         }
+        public class Counts
+        {
+            public static void Zero()
+            {
+                var inputList = new List<Int16>();
+                bool flag = true;
+
+                Console.WriteLine("Введите целые числа через запятую:");
+                string? input = Console.ReadLine()!;
+                string[] inputArray = input.Split(",");
+                foreach (string number in inputArray)
+                {
+                    if (Int16.TryParse(number, out var numInt)) inputList.Add(numInt);
+                    else
+                    {
+                        Console.WriteLine($"Некорректный ввод ({number})!");
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    var greaterZero = (inputList.Where(element => element > 0)).Count();
+                    Console.WriteLine($"Введено {greaterZero} чисел(числа) больше нуля.");
+                }
+                flag = true;
+            }
+            public static void Cross()
+            {
+                // x=-(b2-b1)/(k2-k1); y= k2 * x + b2 или k1 * x + b1
+                Console.WriteLine($"Точка пересечения прямых.");
+            }
+        }
+
     }
 }
