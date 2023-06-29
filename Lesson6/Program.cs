@@ -24,39 +24,38 @@ namespace Lesson6
                 if (Console.ReadLine() == "q") break;
             }
         }
-        public class Counts
+    }
+    public class Counts
+    {
+        public static void Zero()
         {
-            public static void Zero()
-            {
-                var inputList = new List<Int16>();
-                bool flag = true;
+            var inputList = new List<Int16>();
+            bool flag = true;
 
-                Console.WriteLine("Введите целые числа через запятую:");
-                string? input = Console.ReadLine()!;
-                string[] inputArray = input.Split(",");
-                foreach (string number in inputArray)
-                {
-                    if (Int16.TryParse(number, out var numInt)) inputList.Add(numInt);
-                    else
-                    {
-                        Console.WriteLine($"Некорректный ввод ({number})!");
-                        flag = false;
-                        break;
-                    }
-                }
-                if (flag)
-                {
-                    var greaterZero = (inputList.Where(element => element > 0)).Count();
-                    Console.WriteLine($"Введено {greaterZero} чисел(числа) больше нуля.");
-                }
-                flag = true;
-            }
-            public static void Cross()
+            Console.WriteLine("Введите целые числа через запятую:");
+            string? input = Console.ReadLine()!;
+            string[] inputArray = input.Split(",");
+            foreach (string number in inputArray)
             {
-                // x=-(b2-b1)/(k2-k1); y= k2 * x + b2 или k1 * x + b1
-                Console.WriteLine($"Точка пересечения прямых.");
+                if (Int16.TryParse(number, out var numInt)) inputList.Add(numInt);
+                else
+                {
+                    Console.WriteLine($"Некорректный ввод ({number})!");
+                    flag = false;
+                    break;
+                }
             }
+            if (flag)
+            {
+                var greaterZero = (inputList.Where(element => element > 0)).Count();
+                Console.WriteLine($"Введено {greaterZero} чисел(числа) больше нуля.");
+            }
+            flag = true;
         }
-
+        public static void Cross()
+        {
+            // x=-(b2-b1)/(k2-k1); y= k2 * x + b2 или k1 * x + b1
+            Console.WriteLine($"Точка пересечения прямых.");
+        }
     }
 }
