@@ -20,6 +20,7 @@ namespace Lesson6
                 Counts.Zero();
                 //Решение Задачи 43
                 Counts.Cross();
+                //Условный выход из программы:
                 Console.WriteLine("Нажмите любую клавишу или введите 'q' и нажмите Enter для выхода.");
                 if (Console.ReadLine() == "q") break;
             }
