@@ -8,6 +8,8 @@
 b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
  */
 
+using System;
+
 namespace Lesson6
 {
     internal class Program
@@ -17,7 +19,7 @@ namespace Lesson6
             while (true)
             {
                 //Решение Задачи 41
-                Counts.Zero();
+                //Counts.Zero();
                 //Решение Задачи 43
                 Counts.Cross();
                 //Условный выход из программы:
@@ -55,8 +57,34 @@ namespace Lesson6
         }
         public static void Cross()
         {
-            // x=-(b2-b1)/(k2-k1); y= k2 * x + b2 или k1 * x + b1
-            Console.WriteLine($"Точка пересечения прямых.");
+            var inputList = new List<Int16>(4);
+            bool flag = true;
+            var outputList = new List<float>(2);
+            float x;
+
+            Console.WriteLine("Введите целые числа через запятую:");
+            string? input = Console.ReadLine()!;
+            string[] inputArray = input.Split(",");
+            foreach (string number in inputArray)
+            {
+                if (Int16.TryParse(number, out var numInt)) inputList.Add(numInt);
+                else
+                {
+                    Console.WriteLine($"Некорректный ввод ({number})!");
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                // b1 = 2, k1 = 5, b2 = 4, k2 = 9
+                // x=-(b2-b1)/(k2-k1); y= k2 * x + b2 или k1 * x + b1
+                x = -((float)inputList[2] - (float)inputList[0]) / ((float)inputList[3] - (float)inputList[1]);
+                outputList.Add(x); outputList.Add(inputList[3] * x + inputList[2]);
+                Console.Write("Точка пересечения двух прямых: ( ");
+                outputList.ForEach(element => Console.Write($"{Math.Round(element,2)} "));
+                Console.WriteLine(")");
+            }
         }
     }
 }
