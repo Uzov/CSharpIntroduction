@@ -19,7 +19,7 @@ namespace Lesson6
             while (true)
             {
                 //Решение Задачи 41
-                //Counts.Zero();
+                Counts.Zero();
                 //Решение Задачи 43
                 Counts.Cross();
                 //Условный выход из программы:
@@ -62,7 +62,7 @@ namespace Lesson6
             var outputList = new List<float>(2);
             float x;
 
-            Console.WriteLine("Введите целые числа через запятую:");
+            Console.WriteLine("Введите целые числа через запятую (b1, k1, b2, k2:");
             string? input = Console.ReadLine()!;
             string[] inputArray = input.Split(",");
             foreach (string number in inputArray)
@@ -77,7 +77,6 @@ namespace Lesson6
             }
             if (flag)
             {
-                // b1 = 2, k1 = 5, b2 = 4, k2 = 9
                 // x=-(b2-b1)/(k2-k1); y= k2 * x + b2 или k1 * x + b1
                 x = -((float)inputList[2] - (float)inputList[0]) / ((float)inputList[3] - (float)inputList[1]);
                 outputList.Add(x); outputList.Add(inputList[3] * x + inputList[2]);
