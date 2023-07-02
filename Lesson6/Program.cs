@@ -62,7 +62,7 @@ namespace Lesson6
             var outputList = new List<float>(2);
             float x;
 
-            Console.WriteLine("Введите целые числа через запятую (b1, k1, b2, k2:");
+            Console.WriteLine("Введите целые числа через запятую (b1, k1, b2, k2):");
             string? input = Console.ReadLine()!;
             string[] inputArray = input.Split(",");
             foreach (string number in inputArray)
