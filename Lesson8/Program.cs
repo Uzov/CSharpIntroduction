@@ -51,12 +51,14 @@ namespace Lesson8
         private static void Main()
         {
             Lesson8 challenge54 = new();
+            Lesson8 challenge56 = new();
             List<List<int>> inputList = new() {
                 new List < int >() { 1, 4, 7, 2 },
                 new List < int >() { 5, 9, 2, 3 },
                 new List < int >() { 8, 4, 2, 4 }
             };
             challenge54.SortRow(inputList);
+            challenge56.SumRow(inputList);
         }
     }
     internal class Lesson8
@@ -67,7 +69,13 @@ namespace Lesson8
             foreach (List<int> value in inputList) { value.Sort(); value.Reverse(); };
             inputList.ForEach(p => { p.ForEach(n => Console.Write($"{n} ")); Console.WriteLine(); });
         }
-        
+
+        //Задача56
+        public void SumRow(List<List<int>> inputList)
+        {
+            foreach (List<int> value in inputList) { Console.WriteLine(value.Sum()); };
+        }
+
         //Печать массива
         private static void PrintArray(int[,] arr)
         {
