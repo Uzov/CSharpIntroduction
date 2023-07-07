@@ -66,8 +66,14 @@ namespace Lesson8
         //Задача54
         public void SortRow(List<List<int>> inputList)
         {
-            foreach (List<int> value in inputList) { value.Sort(); value.Reverse(); };
-            inputList.ForEach(p => { p.ForEach(n => Console.Write($"{n} ")); Console.WriteLine(); });
+            foreach (List<int> value in inputList) { 
+                value.Sort(); 
+                value.Reverse(); 
+            };
+            inputList.ForEach(p => { 
+                p.ForEach(n => Console.Write($"{n} ")); 
+                Console.WriteLine(); 
+            });
         }
 
         //Задача56
