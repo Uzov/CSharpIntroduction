@@ -41,24 +41,45 @@
 10 09 08 07 
  */
 
-using System;
-using System.Linq;
-
 namespace Lesson8
 {
+    static class Constants
+    {
+        public const bool Debug = false;
+    }
+    
     internal class Program
     {
         private static void Main()
         {
             Lesson8 challenge54 = new();
             Lesson8 challenge56 = new();
+            Lesson8 challenge58 = new();
+
             List<List<int>> inputList = new() {
                 new List < int >() { 1, 4, 7, 2 },
                 new List < int >() { 5, 9, 2, 3 },
                 new List < int >() { 8, 4, 2, 4 }
             };
+            
             challenge54.SortRow(inputList);
+            Console.WriteLine();
+            
             challenge56.SumRow(inputList);
+            Console.WriteLine();
+            
+            List<List<int>> firstList = new() {
+                new List < int >() { 2, 4 },
+                new List < int >() { 3, 2 }
+            };
+            
+            List<List<int>> secondList = new() {
+                new List < int >() { 3, 4 },
+                new List < int >() { 3, 3 }
+            };
+            
+            challenge58.Multiple(firstList, secondList);
+            Console.WriteLine();
         }
     }
     internal class Lesson8
@@ -73,10 +94,31 @@ namespace Lesson8
         //Задача56
         public void SumRow(List<List<int>> inputList)
         {
-            foreach (List<int> value in inputList) { Console.WriteLine(value.Sum()); };
+            List<int> sum = new List<int>();
+            foreach (List<int> value in inputList) { 
+                sum.Add(value.Sum()); 
+                if (Constants.Debug) Console.WriteLine(value.Sum());
+            };
+            if (Constants.Debug) Console.WriteLine(sum.Min());
+            Console.WriteLine($"Индекс строки с минимальной суммой: {sum.IndexOf(sum.Min())}");
+            sum.Clear();
         }
 
-        //Печать массива
+        //Задача58
+        public void Multiple(List<List<int>> firstList, List<List<int>> secondList)
+        {
+            var multiplyList = firstList.Zip(secondList, (first, second) => first.Zip(second, (firstone, secondone) => firstone * secondone));
+            multiplyList.ToList().ForEach(p => { p.ToList().ForEach(n => Console.Write($"{n} ")); Console.WriteLine(); });
+        }
+
+        //Задача60
+
+        public void ThreeDim()
+        {
+
+        }
+
+        //Печать двумерного массива
         private static void PrintArray(int[,] arr)
         {
             int m = arr.GetLength(0);//Число строк массива
