@@ -127,21 +127,10 @@ namespace Lesson8
          27(0,0,1) 90(0,1,1)
          26(1,0,1) 55(1,1,1)
          */
-
         public void ThreeDim()
         {
-            List<int> ints = new List<int>() {66, 27, 25, 90, 34, 26, 41, 55 };
-            var chunk4 = ints.Chunk(ints.Count/2);
-            Console.WriteLine();
-            foreach (var chunk in chunk4) {
-                foreach (var chunk2 in chunk)
-                {
-                    //Console.WriteLine(chunk2);
-                }
-            };
-
             int[,,] array3D = new int[2, 2, 2] { { { 66, 27 }, { 25, 90 } }, { { 34, 26 }, { 41, 55 } } };
-            Console.WriteLine("Проверка правильности задания массива:");
+            Console.WriteLine("Проверка правильности формирования массива:");
                 Console.Write($"{array3D[0, 0, 0]}(0,0,0)=66 ");
             Console.WriteLine($"{array3D[0, 1, 0]}(0,1,0)=25 ");
                 Console.Write($"{array3D[1, 0, 0]}(1,0,0)=34 ");
@@ -150,7 +139,7 @@ namespace Lesson8
             Console.WriteLine($"{array3D[0, 1, 1]}(0,1,1)=90 ");
                 Console.Write($"{array3D[1, 0, 1]}(1,0,1)=26 ");
             Console.WriteLine($"{array3D[1, 1, 1]}(1,1,1)=55 ");
-            Console.WriteLine("Вывод массива в нужной последовательности:");
+            Console.WriteLine("Вывод массива в нужной в задаче последовательности:");
             for (int z=0; z<2; z++)
             {
                 for (int x=0; x<2; x++)
@@ -163,6 +152,19 @@ namespace Lesson8
                     }
                 }
             }
+
+        }
+
+        //Задача 62
+        /*
+        01 02 03 04
+        12 13 14 05
+        11 16 15 06
+        10 09 08 07 
+         */
+
+        public void Spiral()
+        {
 
         }
 
