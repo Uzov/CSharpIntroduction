@@ -41,6 +41,8 @@
 10 09 08 07 
  */
 
+using System;
+
 namespace Lesson8
 {
     static class Constants
@@ -56,6 +58,7 @@ namespace Lesson8
             Lesson8 challenge56 = new();
             Lesson8 challenge58 = new();
             Lesson8 challenge60 = new();
+            Lesson8 challenge62 = new();
 
             List<List<int>> inputList = new() {
                 new List < int >() { 1, 4, 7, 2 },
@@ -83,6 +86,12 @@ namespace Lesson8
             Console.WriteLine();
 
             challenge60.ThreeDim();
+            Console.WriteLine();
+
+            challenge62.Spiral();
+            Console.WriteLine();
+
+
         }
     }
     internal class Lesson8
@@ -156,16 +165,32 @@ namespace Lesson8
         }
 
         //Задача 62
-        /*
-        01 02 03 04
-        12 13 14 05
-        11 16 15 06
-        10 09 08 07 
-         */
-
         public void Spiral()
         {
 
+            while (true)
+            {
+                Console.WriteLine("Введите целое положительное число (0 или любую клавишу для выхода):");
+                if (!Int32.TryParse(Console.ReadLine()!, out int number) || number <= 0) break;
+                Console.WriteLine();
+
+                int[,] ouputArray = new int[number, number];
+                int i = 0, j = 0;
+                int value = 1;
+
+                while (number != 0)
+                {
+                    int count;
+                    for (count = 0; count < number - 1; count++) ouputArray[i, j++] = value++; //вправо
+                    for (count = 0; count < number - 1; count++) ouputArray[i++, j] = value++; //вниз
+                    for (count = 0; count < number - 1; count++) ouputArray[i, j--] = value++; //влево
+                    for (count = 0; count < number - 1; count++) ouputArray[i--, j] = value++; //вверх
+
+                    i++; j++; number = number < 2 ? 0 : number - 2; //переход на внутренний виток
+                }
+
+                PrintArray(ouputArray);
+            }
         }
 
         //Печать двумерного массива
@@ -173,11 +198,25 @@ namespace Lesson8
         {
             int m = arr.GetLength(0);//Число строк массива
             int n = arr.GetLength(1);//Число столбцов массива
+            int maxNum = 1;
+
+            for (int i = 0; i < m; i++) 
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (arr[i,j] > maxNum) maxNum = arr[i,j];
+                }
+                    
+            }
+
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    Console.Write($"{arr[i, j]} ");
+                    string leadZeroes = "";
+                    var count = (int)Math.Log10(maxNum) - (int)Math.Log10(arr[i, j]);
+                    if (count >= 1) leadZeroes = new string('0', count);
+                    Console.Write($"{leadZeroes}{arr[i, j]} ");
                     if (j == n - 1) Console.WriteLine();
                 }
                 if (i == m - 1) Console.WriteLine();
