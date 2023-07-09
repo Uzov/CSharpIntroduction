@@ -12,7 +12,6 @@ m = 3, n = 2 -> A(m,n) = 9
 m = 2, n = 3 -> A(m,n) = 29
  */
 using System.Threading;
-delegate void Akkerman();
 internal class Program
 {
     private static void Main(string[] args)
